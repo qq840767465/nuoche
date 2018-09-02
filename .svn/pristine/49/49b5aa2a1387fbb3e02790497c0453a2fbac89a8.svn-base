@@ -1,0 +1,86 @@
+package com.service.weixin;
+
+import java.util.List;
+
+import net.sf.json.JSONArray;
+import net.sf.json.JsonConfig;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.dao.BaoxianBaodanDAO;
+import com.dao.BaoxianBaodanGonshiDAO;
+import com.dao.BaoxianGonshiDAO;
+import com.dao.HqlDAO;
+import com.dao.WeixinUserDAO;
+import com.pojo.WeixinUser;
+import com.util.JsonFilter;
+
+@Service
+public class WeixinChexianService {
+
+	@Autowired
+	private HqlDAO hqlDAO;
+
+	@Autowired
+	private BaoxianBaodanDAO baodanDAO;
+
+	@Autowired
+	private BaoxianBaodanGonshiDAO baodanGonshiDAO;
+
+	@Autowired
+	private BaoxianGonshiDAO baoxianGonshiDAO;
+	
+	@Autowired
+	private WeixinUserDAO weixinUserDAO;
+	
+
+	/**
+	 * 根据微信用户获取保单信息
+	 * 
+	 * @param weixinOpenId
+	 * @return
+	 */
+	public WeixinUser getBaoxianInfo(String weixinOpenId) {
+		String hql = "from WeixinUser where openid=?";
+		List list= hqlDAO.pageQuery(hql, 1, 1, weixinOpenId);
+		if (list.size() > 0)
+			return (WeixinUser) list.get(0);
+
+		return null;
+	}
+
+	/**
+	 * 根据openid获取微信对象json
+	 * @param weixinOpenId
+	 * @return
+	 */
+	public String getBaoxianInfoToJson(String weixinOpenId) {
+		String hql = "from WeixinUser where openid=?";
+		List list = hqlDAO.pageQuery(hql, 1, 1, weixinOpenId);
+		JsonConfig jsonConfig = new JsonConfig();
+		JsonFilter.ignoredSet(jsonConfig);
+		String json = JSONArray.fromObject(list, jsonConfig).toString();
+		return json;
+
+	}
+
+	public void addBaoxianInfo(WeixinUser weixinUser, String cph, String cjh,
+			String fdj, String sfz, String cdr,String xm) {
+		weixinUser.setCejiahao(cjh);
+		weixinUser.setCepai(cph);
+		weixinUser.setTime(java.sql.Date.valueOf(cdr));
+		weixinUser.setFadonjihao(fdj);
+		weixinUser.setSfz(sfz);
+		weixinUser.setName(xm);
+		
+		
+		
+	}
+	
+	
+	
+
+}

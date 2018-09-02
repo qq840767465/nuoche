@@ -1,0 +1,159 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<script src="js/mui.min.js"></script>
+		<script type="text/javascript">
+			mui.init()
+		</script>
+	</head>
+	<style>
+		.mui-table-view{
+			margin-top: 10px;
+		}
+		
+		.mui-table-view{
+			height: 50px;
+		}
+		.mui-input-row span{
+			padding-top: 20px;
+		}
+		#shang{
+			width: 40%;
+			margin-left: 5%;
+			margin-top: 20px;
+		}
+		#xia{
+			width: 40%;
+			margin-left: 55%;
+			margin-top: -67.5px
+		}
+		
+	</style>
+	<body>
+		<header class="mui-bar mui-bar-nav" style="background-color: #ff7900;">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left" style="color: white;"></a>
+			<h1 class="mui-title" style="color: white;">卡卡车险</h1>
+		</header>
+		
+		<div class="mui-content">
+			<ul class="mui-table-view">
+				<li class="mui-table-view-cell">
+					<a class="mui-input-row mui-checkbox">
+						<span>请选择保险公司:</span>
+						<input name="checkbox" value="Item 1" type="checkbox" id="quan" onclick='quanxuan()' >
+					</a>
+				</li>
+			</ul>
+			<ul class="mui-table-view">
+				<li class="mui-table-view-cell">
+					<a class="mui-input-row mui-checkbox">
+						<img src="img/logo-pa.png" />
+						<span style="position: absolute;top: -5px;left: 30%;">中国平安</span>
+						<input name="checkbox" value="Item 1" type="checkbox" >
+					</a>
+				</li>
+			</ul>
+			<ul class="mui-table-view">
+				<li class="mui-table-view-cell">
+					<a class="mui-input-row mui-checkbox">
+						<img src="img/logo-zh.jpg" />
+						<span style="position: absolute;top: -5px;left: 30%;">中华保险</span>
+						<input name="checkbox" value="Item 1" type="checkbox" >
+					</a>
+				</li>
+			</ul>
+			
+			<ul class="mui-table-view">
+				<li class="mui-table-view-cell">
+					<a class="mui-input-row mui-checkbox">
+						<img src="img/logo-tpy.jpg" />
+						<span style="position: absolute;top: -5px;left: 30%;">太平洋保险</span>
+						<input name="checkbox" value="Item 1" type="checkbox" >
+					</a>
+				</li>
+			</ul>
+			
+			<ul class="mui-table-view">
+				<li class="mui-table-view-cell">
+					<a class="mui-input-row mui-checkbox">
+						<img src="img/logo-ht.jpg" />
+						<span style="position: absolute;top: -5px;left: 30%;">华泰保险</span>
+						<input name="checkbox" value="Item 1" type="checkbox" >
+					</a>
+				</li>
+			</ul>
+			
+			<ul class="mui-table-view">
+				<li class="mui-table-view-cell">
+					<a class="mui-input-row mui-checkbox">
+						<img src="img/logo-yg.jpg" />
+						<span style="position: absolute;top: -5px;left: 30%;">阳光保险</span>
+						<input name="checkbox" value="Item 1" type="checkbox" >
+					</a>
+				</li>
+			</ul>
+			
+			<ul class="mui-table-view">
+				<li class="mui-table-view-cell">
+					<a class="mui-input-row mui-checkbox">
+						<img src="img/logo-zsxn.jpg" />
+						<span style="position: absolute;top: -5px;left: 30%;">招商信诺</span>
+						<input name="checkbox" value="Item 1" type="checkbox" >
+					</a>
+				</li>
+			</ul>
+			
+			<ul class="mui-table-view">
+				<li class="mui-table-view-cell">
+					<a class="mui-input-row mui-checkbox">
+						<img src="img/logo-ab.jpg" />
+						<span style="position: absolute;top: -5px;left: 30%;">安邦保险</span>
+						<input name="checkbox" value="Item 1" type="checkbox" >
+					</a>
+				</li>
+			</ul>
+			
+			<ul class="mui-table-view">
+				<li class="mui-table-view-cell">
+					<a class="mui-input-row mui-checkbox">
+						<img src="img/logo-zhh.jpg" />
+						<span style="position: absolute;top: -5px;left: 30%;">中宏保险</span>
+						<input name="checkbox" value="Item 1" type="checkbox" >
+					</a>
+				</li>
+			</ul>
+			
+			<button type="button" id="shang" class="mui-btn  mui-btn-warning mui-btn-block" onclick="last()">上一步</button>
+			<button type="button" id="xia" class="mui-btn  mui-btn-warning mui-btn-block" onclick="next()">下一步</button>
+			
+		</div>
+		
+		
+		<script>
+			function quanxuan()
+			{
+				var x=document.getElementsByName('checkbox')
+				var y=document.getElementById('quan')
+				for(var i = 0; i < x.length; i++){
+					x[i].checked=y.checked;
+				}
+				var fan=document.getElementById('fan');
+				fan.checked=false;
+			}
+			
+			function last(){
+				window.location.href="index.html?"+Math.random();
+			}
+			function next(){
+				window.location.href="main.html?"+Math.random();
+			}
+			
+		</script>
+	</body>
+
+</html>

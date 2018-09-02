@@ -1,0 +1,130 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="css/mui.min.css" rel="stylesheet" />
+
+		<link rel="stylesheet" type="text/css" href="css/zixie.css" />
+		<link rel="stylesheet" href="css/zepto.mdatetimer.css" />
+		<link rel="stylesheet" type="text/css" href="css/app.css" />
+		<script src="js/mui.min.js"></script>
+		<script type="text/javascript">
+			mui.init()
+		</script>
+	</head>
+	<style>
+		.mui-content .anniu{
+			width: 90%;
+			margin-left: 10%;
+			margin-top: 20px;
+		}
+	</style>
+	<body>
+		<div class="mui-content">
+			<ul class="mui-table-view">
+				<li class="mui-table-view-cell">
+					<a class="mui-navigate-right">
+						<label>商业险到期时间:</label>
+						<input type="button" id="shangye" value="请输入..." readonly/>
+					</a>
+				</li>
+				<li class="mui-table-view-cell">
+					<a class="mui-navigate-right">
+						<label>交强险到期时间:</label>
+						<input type="button" id="jiaoqiang" value="请选择..." readonly/>
+					</a>
+				</li>
+
+				<li class="mui-table-view-cell">
+					<a class="">
+						<div class="min_input tr0">
+							<select class="mui-btn mui-btn-block" id="dataSource">
+								<option value="item-1">交强险</option>
+								<option value="item-2">车辆损失险</option>
+								<option value="item-3">第三者责任险</option>
+								<option value="item-4">车上人员责任险</option>
+								<option value="item-5">全车盗抢险</option>
+								<option value="item-6">玻璃单独破碎险</option>
+								<option value="item-7">自燃损失险</option>
+								<option value="item-8">车身划痕险</option>
+								<option value="item-9">不计免赔险商业车险</option>
+							</select>
+							<button id="add" class="append_btu">添加</button>
+						</div>
+						<img style="width: 100%;margin-top: -40px;" src="img/tabtop.jpg" />
+					</a>
+				</li>
+			</ul>
+			
+			<div class="mui-content-padded">
+			 <button type="button" class="mui-btn mui-btn-warning mui-btn-block mui-btn-outlined" style="width: 100%">确 认</button>
+			</div>
+		</div>
+
+		
+		<script type="text/javascript" src="js/zepto.js"></script>
+		<script type="text/javascript" src="js/zepto.mdatetimer.js"></script>
+
+		<script>
+			//车险险种
+			$(function() {
+				$('#add').click(function() {
+					var sel = document.getElementById('dataSource'),
+						text = sel.options[sel.selectedIndex].innerHTML;
+					var id = ($(".txt_1").length) / 1;
+					$(".min_input").parent().append('<div class="min_input tr' + id + '">' +
+						'<table id="tab">' +
+						'<tr class="trjia">' +
+						'<td id="choosed" style="width: 60%;">' + text + '</td>' +
+						'<td style="width: 20%;height: 30px;">' +
+						'<select style="width: 75px;height: 30px;margin-left: -25%;"><option value="mon-1">10万</option>' +
+						'<option value="mon-2">20万</option>' +
+						'<option value="mon-3">30万</option>' +
+						'</select></td>' +
+						'<td style="width: 20%;">' +
+						'<div class="mui-switch mui-active" style="margin-left:3%;">' +
+						'<div class="mui-switch-handle"></div>' +
+						'</div>' +
+						'</td>' +
+						'</tr><hr style="width: 90%;margin-left: 15px;margin-top: -10px;"/>' +
+						'</table>');
+					//<button  class="delete_btu">删除</button>
+					
+					id += 1;
+					
+					//初始化switch开关
+					mui('.mui-switch').each(function() {
+                    	mui(this).switch();
+                	});
+				})
+				
+				
+			});
+			
+
+			$(function() {
+				$('#shangye').mdatetimer({
+					mode: 1, //时间选择器模式：1：年月日，2：年月日时分（24小时），3：年月日时分（12小时），4：年月日时分秒。默认：1
+					format: 2, //时间格式化方式：1：2015年06月10日 17时30分46秒，2：2015-05-10  17:30:46。默认：2
+					years: [2000, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022,2023,2024,2025], //年份数组
+					nowbtn: true, //是否显示现在按钮
+					onOk: function() {
+						//alert('OK');
+					}, //点击确定时添加额外的执行函数 默认null
+					onCancel: function() {
+						//alert('www.sucaijiayuan.com');
+					}, //点击取消时添加额外的执行函数 默认null
+				});
+
+			});
+			
+			
+			
+		</script>
+
+	</body>
+
+</html>

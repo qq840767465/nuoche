@@ -1,0 +1,62 @@
+package com.action.weixin;
+
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.pojo.WeixinUser;
+import com.service.weixin.WeixinChexianService;
+
+@Controller
+@RequestMapping("/weixinChexian.do")
+public class WeixinChexianAction {
+
+	@Autowired
+	private WeixinChexianService weixinChexianService;
+
+	@Autowired
+	private HttpServletRequest request;
+
+	/**
+	 * 得到保险个人资料
+	 * 
+	 * @return
+	 */
+	@ResponseBody
+	@RequestMapping(params = "p=getCheInfo")
+	public String getCheInfo() {
+		WeixinUser weixinUser = (WeixinUser) request.getSession().getAttribute(
+				"weixinuser");
+		if (weixinUser == null)
+			return "请登录";
+
+		String json = weixinChexianService.getBaoxianInfoToJson(weixinUser
+				.getOpenid());
+
+		return json;
+	}
+
+	@RequestMapping(params = "p=addBaoxianInfo")
+	@ResponseBody
+	public String addBaoxianInfo() {
+		WeixinUser weixinUser = (WeixinUser) request.getSession().getAttribute(
+				"weixinuser");
+		if (weixinUser == null)
+			return "请登录";
+		
+		String cph = request.getParameter("cph");
+		String cjh = request.getParameter("cjh");
+		String fdj = request.getParameter("fdj");
+		String sfz = request.getParameter("sfz");
+		String cdr = request.getParameter("cdr");
+        String xm  = request.getParameter("xm");
+		weixinChexianService.addBaoxianInfo(weixinUser,cph,cjh,fdj,sfz,cdr,xm);
+	    
+		return "success";
+	}
+
+}

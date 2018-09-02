@@ -1,0 +1,63 @@
+<!doctype html>
+<html>
+ 
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="css/zixie.css" />
+		<link rel="stylesheet" type="text/css" href="css/app.css"/>
+	
+		<script src="js/mui.min.js"></script>
+		<script type="text/javascript">
+			mui.init()
+		</script>
+		
+	</head>
+		<style>
+			.xinxi{
+				font-size: 11px;
+			}
+		</style>
+	<body>
+		
+		<div class="mui-content">
+			<ul class="mui-table-view">
+				<li class="mui-table-view-cell" style="">
+					<a class="mui-navigate-right" href="xianzhong.html">
+						<label class="xinxi">姓名：<span>程先生</span></label>
+						<label class="xinxi">身份证号:<span>430223199702121517</span></label>
+						<label class="xinxi">车牌号：<span>湘A123456</span></label>
+					</a>
+				</li>
+			</ul>
+			
+			<ul id="dingdan" class="mui-table-view">
+			</ul>
+			
+		</div>
+		<script>
+			window.onload = function() {
+				for (var i=1;i<2;i++) {
+					var testdiv = document.getElementById("dingdan");
+  					testdiv.innerHTML +='<li class="mui-table-view-cell">'
+									+'<a class="ordertop" href="###">'
+									+'<img src="img/logo-pa.png" style="width: 50px;height: 20px;" />'
+									+'<label>中国平安</label>'
+									+'</a>'
+									//+'</li>'
+									//+'<li class="mui-table-view-cell">'
+									+'<a id="icon-email" href="###" style="height: 40px;" >'
+									+'<span>合计：</span>'
+									+'<span style="color: red;">2269.36元</span>'
+									+'<button type="button" class="mui-btn mui-btn-danger mui-btn-block">确认核保</button>'
+									+'</a>'
+									+'<li style="background-color: lavender;height:10px;"></li>'
+								+'</li>';
+				}
+			}
+		</script>
+	</body>
+
+</html>

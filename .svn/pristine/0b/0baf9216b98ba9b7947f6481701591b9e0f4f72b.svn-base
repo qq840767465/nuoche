@@ -1,0 +1,77 @@
+package com.pojo;
+
+import java.util.HashSet;
+import java.util.Set;
+
+/**
+ * BaoxianGonshi entity. @author MyEclipse Persistence Tools
+ */
+
+public class BaoxianGonshi implements java.io.Serializable {
+
+	// Fields
+
+	private Integer id;
+	private String name;
+	private String logo;
+	private Integer status;
+	private Set baoxianBaodanGonshis = new HashSet(0);
+
+	// Constructors
+
+	/** default constructor */
+	public BaoxianGonshi() {
+	}
+
+	/** full constructor */
+	public BaoxianGonshi(String name, String logo, Integer status,
+			Set baoxianBaodanGonshis) {
+		this.name = name;
+		this.logo = logo;
+		this.status = status;
+		this.baoxianBaodanGonshis = baoxianBaodanGonshis;
+	}
+
+	// Property accessors
+
+	public Integer getId() {
+		return this.id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public String getName() {
+		return this.name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getLogo() {
+		return this.logo;
+	}
+
+	public void setLogo(String logo) {
+		this.logo = logo;
+	}
+
+	public Integer getStatus() {
+		return this.status;
+	}
+
+	public void setStatus(Integer status) {
+		this.status = status;
+	}
+
+	public Set getBaoxianBaodanGonshis() {
+		return this.baoxianBaodanGonshis;
+	}
+
+	public void setBaoxianBaodanGonshis(Set baoxianBaodanGonshis) {
+		this.baoxianBaodanGonshis = baoxianBaodanGonshis;
+	}
+
+}
